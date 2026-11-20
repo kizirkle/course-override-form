@@ -1,21 +1,67 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-<h1 align="center">Notes</h1>
+<h1 align="center">Home</h1>
 <ul class="list-group list-group-flush" id="notes">
-  {% for note in user.notes %}
+  {% for coursereq in user.coursereq %}
   <li class="list-group-item">
-    {{ note.data }}
-    <button type="button" class="close" onClick="deleteNote({{ notes.id }})">
+    {{ coursereq.student_id }}
+    {{coursereq.student_name}}
+    {{coursereq.course_id}}
+    {{coursereq.course_name}}
+    {{coursereq.justification}}
+    <button type="button" class="close" onClick="deleteNote({{ coursereq.id }})">
       <span aria-hidden="true">&times;</span>
     </button>
   </li>
   {% endfor %}
 </ul>
 <form method="POST">
-  <textarea name="note" id="note" class="form-control"></textarea>
-  <br />
-  <div align="center">
-    <button type="submit" class="btn btn-primary">Add Note</button>
+  <h3 align="center">Request a Course</h3>
+  <div class="form-group">
+    <label for="student_id">Student ID</label>
+    <input
+      type="text"
+      class="form-control"
+      id="student_id"
+      name="student_id"
+      placeholder="Enter student id"
+    />
   </div>
+  <div class="form-group">
+    <label for="student_name">Student Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="student_name"
+      name="student_name"
+      placeholder="Enter name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="course_name">Course Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="course_name"
+      name="course_name"
+      placeholder="Enter course name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="course_id">Course ID</label>
+    <input
+      type="text"
+      class="form-control"
+      id="course_id"
+      name="course_id"
+      placeholder="Enter course id"
+    />
+  </div>
+  <div class="form-group">
+    <label for="course_id">Justification</label>
+    <textarea name="justification" id="justification" class="form-control" placeholder="State reasoning here"></textarea>
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endblock %}

@@ -19,10 +19,12 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
-    from .models import User, Note
+    from .models import User, CourseReq
     
     with app.app_context():
         db.create_all()
+        CourseReq.__table__.drop(db.engine)
+        CourseReq.__table__.create(db.engine)
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
