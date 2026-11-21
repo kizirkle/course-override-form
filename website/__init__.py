@@ -37,8 +37,12 @@ def create_app():
     @app.errorhandler(404)
     def page_not_found(error):
         print(error)
-        return render_template('error.html'), 404
+        return render_template('error.html', error = 404)
 
+    @app.errorhandler(500)
+    def server_err(error):
+        print(error)
+        return render_template('error.html', error = 500)
     return app
 
 

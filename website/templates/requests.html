@@ -1,15 +1,19 @@
 {% extends "base.html" %} {% block title %} requests {% endblock %}{% block content %}
 <h1>Requests</h1>
-{% for coursereq in user.coursereq %}
-  <li class="list-group-item">
-    {{ coursereq.student_id }}
-    {{coursereq.student_name}}
-    {{coursereq.course_id}}
-    {{coursereq.course_name}}
-    {{coursereq.justification}}
-    <button type="button" class="close" onClick="deleteNote({{ coursereq.id }})">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </li>
-{% endfor %}
+<p>View and Manage your previous course requests here:</p>
+<ul class="list-group list-group-flush" id="notes">
+    {% for coursereq in user.coursereqs %}
+    <li class="list-group-item">
+        {{ coursereq.student_id }}
+        {{coursereq.student_name}}
+        {{coursereq.course_id}}
+        {{coursereq.course_name}}
+        {{coursereq.justification}}
+        <button type="button" class="close" onclick="deleteReq({{coursereq.id}})">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </li>
+    {% endfor %}
+</ul>
+
 {% endblock %}

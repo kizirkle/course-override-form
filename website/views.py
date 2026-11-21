@@ -6,6 +6,10 @@ import json
 
 views = Blueprint('views', __name__)
 
+@views.route('/requests', methods=['GET'])
+@login_required
+def requests():
+    return render_template('requests.html', user=current_user)
 
 @views.route('/', methods=['GET', 'POST'])
 @login_required
@@ -28,9 +32,9 @@ def home():
     return render_template("home.html", user=current_user)
 
 @views.route('/delete-request', methods=['POST'])
-def delete_note():  
-    coursereq = json.loads(request.data) # this function expects a JSON from the INDEX.js file 
-    coursereq_id = coursereq['id']
+def delete_request():  
+    data = request.get_json()
+    coursereq_id = data.get('reqId')
     coursereq = CourseReq.query.get(coursereq_id)
     if coursereq:
         if coursereq.user_id == current_user.id:
