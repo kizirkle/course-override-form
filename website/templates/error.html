@@ -1,0 +1,9 @@
+{% extends base.html %}{% block title %} Page Not Found {% endblock %} {% block content %}
+
+<h1>Error</h1>
+{% if error = 404 %}
+<p>We could not find the link you were looking for. Sorry!</p>
+<p>{{error}}</p>
+{% elif error = 500%}
+<p>{{error}}</p>
+{% endblock %}

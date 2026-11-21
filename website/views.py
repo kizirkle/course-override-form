@@ -27,8 +27,7 @@ def home():
 
     return render_template("home.html", user=current_user)
 
-
-@views.route('/delete-note', methods=['POST'])
+@views.route('/delete-request', methods=['POST'])
 def delete_note():  
     coursereq = json.loads(request.data) # this function expects a JSON from the INDEX.js file 
     coursereq_id = coursereq['id']
@@ -39,3 +38,4 @@ def delete_note():
             db.session.commit()
 
     return jsonify({})
+
