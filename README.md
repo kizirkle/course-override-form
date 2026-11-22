@@ -1,4 +1,10 @@
-# Flask Web App Tutorial
+# COURSE OVERRIDE FORM
+
+## Description
+
+This is a small app where a student could create an account and submit a request for a course override.
+
+It's meant as a study of Flask, unittesting, flask-bootstrap, flask-login, and using sql with flask. 
 
 ## Setup & Installation
 
@@ -18,9 +24,16 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## Viewing The App
+## Running Tests
+
+```bash
+python test.py
+```
+
+## Viewing The App Locally
 
 Go to `http://127.0.0.1:5000`
 
+## Live Site Link
 
-
+https://course-override-form-6a9e74a9b660.herokuapp.com/ 
