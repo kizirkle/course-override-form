@@ -21,7 +21,7 @@ def home():
         course_num = request.form.get('course_id')
         justification = request.form.get('justification')
         if len(justification) < 1 or len(student_id) < 1 or len(student_name) < 1 or len(course_name) < 1 or len(course_num) < 1:
-            flash('All sections of the form must be filled out!', category='error') 
+            flash('All sections of the form must be filled out!', category='error')
         else:
             new_coursereq = CourseReq(justification = justification, student_id = student_id, student_name = student_name,
                                       course_name = course_name, course_num = course_num, user_id = current_user.id)  #providing the schema for the note 
